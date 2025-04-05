@@ -1,0 +1,17 @@
+# Smithery.ai configuration for GitHub MCP Server
+startCommand:
+  type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    # Update this with any configuration options your MCP server requires
+    type: object
+    properties: {}
+    additionalProperties: false
+  commandFunction: |-
+    (config) => ({
+      "command": "./github-mcp-server",
+      "args": [
+        "stdio"
+      ],
+      "env": {}
+    })
