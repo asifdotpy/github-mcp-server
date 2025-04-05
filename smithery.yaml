@@ -4,13 +4,14 @@ startCommand:
   configSchema:
     # JSON Schema defining the configuration options for the MCP
     type: object
+    required:
+      - githubPersonalAccessToken
     properties:
-      githubToken:
+      githubPersonalAccessToken:
         type: string
         title: GitHub Personal Access Token
-        description: GitHub Personal Access Token with appropriate permissions
+        description: The personal access token for accessing the GitHub API.
         secret: true  # This marks the field as a secret, so it won't be logged
-    required: ["githubToken"]
     additionalProperties: false
   commandFunction: |-
     (config) => ({
@@ -19,6 +20,6 @@ startCommand:
         "stdio"
       ],
       "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": config.githubToken
+        "GITHUB_PERSONAL_ACCESS_TOKEN": config.githubPersonalAccessToken
       }
     })
